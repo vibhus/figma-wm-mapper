@@ -1,0 +1,13 @@
+<h2>Figma to WM Mapping</h2>
+<button id="translate-btn">Translate Button</button>
+<button id="translate-text">Translate Text Input</button>
+
+<script>
+document.getElementById('translate-btn').onclick = () => {
+  parent.postMessage({ pluginMessage: { type: 'translate-btn' } }, '*');
+}
+
+document.getElementById('translate-text').onclick = () => {
+  parent.postMessage({ pluginMessage: { type: 'translate-text' } }, '*');
+}
+</script>
