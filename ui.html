@@ -1,13 +1,32 @@
 <h2>Figma to WM Mapping</h2>
+<select id="design-system-select">
+    <option>---Select design system---</option>
+    <option>Material UI</option>
+    <option>Adobe Spectrum</option>
+</select>
+<br><br>
 <button id="translate-btn">Translate Button</button>
 <button id="translate-text">Translate Text Input</button>
+<br>
+<button id="generate-template">Generate Template</button>
+<pre id="code"></pre>
 
 <script>
 document.getElementById('translate-btn').onclick = () => {
-  parent.postMessage({ pluginMessage: { type: 'translate-btn' } }, '*');
+    const ds = document.getElementById('design-system-select').value;
+    parent.postMessage({ pluginMessage: { type: 'translate-btn', ds:  ds} }, '*');
 }
 
 document.getElementById('translate-text').onclick = () => {
-  parent.postMessage({ pluginMessage: { type: 'translate-text' } }, '*');
+    const ds = document.getElementById('design-system-select').value;
+    parent.postMessage({ pluginMessage: { type: 'translate-text', ds:  ds } }, '*');
+}
+document.getElementById('generate-template').onclick = () => {
+    parent.postMessage({ pluginMessage: { type: 'generate-template'} }, '*');
+}
+
+onmessage = msg => {
+    const pluginMsg = msg.data.pluginMessage;
+    document.getElementById('code').innerText = pluginMsg.value
 }
 </script>

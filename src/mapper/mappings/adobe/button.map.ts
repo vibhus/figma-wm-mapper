@@ -1,4 +1,4 @@
-export class ButtonMapper {
+export class AdobeButtonMapper {
     constructor(private comp: InstanceNode) {}
 
     template: string = `<wm-button name="${this.comp.name}" \
